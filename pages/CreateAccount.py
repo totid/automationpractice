@@ -2,6 +2,7 @@ from base.BasePage import BasePage
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.action_chains import ActionChains
 from common.common_classes import PersonalInformation
 from common.common_classes import Address
@@ -15,7 +16,7 @@ class CreateAccount(BasePage):
 
     address = 'address1'
     city = 'city'
-    state = ''
+    state = 'id_state'
     postal_code = 'postcode'
     phone_mobile = 'phone_mobile'
 
@@ -37,10 +38,14 @@ class CreateAccount(BasePage):
         self.driver.find_element_by_id(self.address).send_keys(address.address)
         self.driver.find_element_by_id(self.city).send_keys(address.city)
 
-        # ActionChains(self.driver).move_to_element(self.driver.find_element_by_id(self.postal_code))
-        # self.driver.implicitly_wait(5)
-        #self.driver.find_element_by_id(self.state).send_keys(address.state)
-        #self.driver.find_element_by_id(self.postal_code).click()
-        #self.driver.find_element_by_id(self.postal_code).send_keys(address.postal_code)
+        option_number = '17'
+        xpath = "/html/body/div/div[2]/div/div[3]/div/div/form/div[2]/p[7]/div/select/option[" + option_number + "]"
+        WebDriverWait(self.driver, 10).until(
+            expected_conditions.presence_of_element_located((By.XPATH, xpath))
+        )
+        element = self.driver.find_element_by_xpath(xpath)
+        element.click()
+
+        self.driver.find_element_by_id(self.postal_code).send_keys(address.postal_code)
         self.driver.find_element_by_id(self.phone_mobile).send_keys(address.phone_mobile)
         self.driver.find_element_by_id(self.register_button).click()
