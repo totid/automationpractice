@@ -1,1 +1,5 @@
 .idea/
+prova.py
+geckodriver.log
+base/*/
+tests/*/
