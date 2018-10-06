@@ -24,5 +24,7 @@ class Authentication(BasePage):
         self.driver.find_element_by_id(self.email_create).send_keys(email)
         self.driver.find_element_by_id(self.email_create_button).click()
 
-    def sign_in(self):
+    def sign_in(self, user):
+        self.driver.find_element_by_id(self.email_existing).send_keys(user.email)
+        self.driver.find_element_by_id(self.passwd_existing).send_keys(user.password)
         self.driver.find_element_by_id(self.sign_in_button).click()
