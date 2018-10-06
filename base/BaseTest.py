@@ -15,8 +15,10 @@ class BaseTest(unittest.TestCase):
             self.browser = self.driver.Firefox()
         else:
             raise Exception('Browser not supported')
+        self.browser.maximize_window()
         self.browser.delete_all_cookies()
 
     def tearDown(self):
-        self.browser.quit()
+        #self.browser.quit()
+        return
 
