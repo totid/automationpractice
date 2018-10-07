@@ -1,3 +1,4 @@
+from selenium.common.exceptions import WebDriverException
 from base.BaseTest import BaseTest
 from pages.HomePage import HomePage
 from pages.SearchPage import SearchPage
@@ -6,6 +7,10 @@ from pages.ShoppingCartSummary import ShoppingCartSummary
 from pages.Authentication import Authentication
 from pages.CreateAccount import CreateAccount
 from pages.MyAccount import MyAccount
+from pages.Addresses import Addresses
+from pages.Shipping import Shipping
+from pages.Payment import Payment
+from pages.OrderSummary import OrderSummary
 from common.common_classes import PersonalInformation
 from common.common_classes import Address
 
@@ -27,7 +32,7 @@ class FunctionalTests(BaseTest):
         account = MyAccount(self.browser)
 
     def test_search_not_existing_product(self):
-        product = "prova"
+        product = "not existing product"
         self.browser.get('http://automationpractice.com/index.php')
         self.assertIn('My Store', self.browser.title)
         home_page = HomePage(self.browser)
@@ -83,4 +88,14 @@ class FunctionalTests(BaseTest):
         cart_summary.proceed_to_checkout()
         authentication = Authentication(self.browser)
         authentication.sign_in(user=user_information)
+        addresses = Addresses(self.browser)
+        addresses.proceed_to_checkout()
+        shipping = Shipping(self.browser)
+        shipping.click_tos()
+        shipping.proceed_to_checkout()
+        payment = Payment(self.browser)
+        payment.pay_by_bank_wire()
+        order_summary = OrderSummary(self.browser)
+        order_summary.confirm()
+
 
