@@ -98,4 +98,31 @@ class FunctionalTests(BaseTest):
         order_summary = OrderSummary(self.browser)
         order_summary.confirm()
 
+    def test_search_existing_product_sign_in_existing_user_not_tos(self):
+        product = "dress"
+        user_information = PersonalInformation(email="johndoe@mailinator.com", first_name="John", last_name="Doe",
+                                               password="12345")
+        self.browser.get('http://automationpractice.com/index.php')
+        self.assertIn('My Store', self.browser.title)
+        home_page = HomePage(self.browser)
+        home_page.sign_in()
+        home_page.search_product(product)
+        home_page.search_button()
+        search_results = SearchPage(self.browser)
+        res = search_results.product_found()
+        self.assertTrue(res)
+        search_results.select_list_view()
+        search_results.add_to_cart_first_product_found()
+        cart = ShoppingCartPopupPage(self.browser)
+        cart.proceed_to_checkout()
+        cart_summary = ShoppingCartSummary(self.browser)
+        cart_summary.proceed_to_checkout()
+        authentication = Authentication(self.browser)
+        authentication.sign_in(user=user_information)
+        addresses = Addresses(self.browser)
+        addresses.proceed_to_checkout()
+        shipping = Shipping(self.browser)
+        shipping.proceed_to_checkout()
+        self.assertTrue(shipping.tos_not_selected())
+
 
