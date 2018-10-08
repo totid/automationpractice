@@ -11,7 +11,7 @@ Used Page Object Pattern implementation.
 * Selenium WebDriver: 3.14.0
 * Python: 3.6
 
-#### Prerequisites:
+### Prerequisites:
 __geckodriver__: https://github.com/mozilla/geckodriver/releases
 
 __chromedriver__: https://sites.google.com/a/chromium.org/chromedriver/
