@@ -5,4 +5,4 @@ base/*/
 common/*/
 configuration/*/
 pages/*/
-tests_generic/*/
+tests_generic/*/*
