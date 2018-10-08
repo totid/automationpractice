@@ -20,6 +20,9 @@ class Shipping(BasePage):
             return False
         return True
 
+    def tos_selected(self):
+        return not self.tos_not_selected()
+
     def click_tos(self):
         tos_checkbox = self.driver.find_element_by_id(self.tos)
         tos_checkbox.click()

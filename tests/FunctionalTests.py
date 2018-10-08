@@ -20,6 +20,13 @@ class FunctionalTests(BaseTest):
         self.browser.get('http://automationpractice.com/index.php')
         self.assertIn('My Store', self.browser.title)
 
+    def test_open_shopping_cart(self):
+        self.browser.get('http://automationpractice.com/index.php')
+        self.assertIn('My Store', self.browser.title)
+        home_page = HomePage(self.browser)
+        home_page.open_shopping_cart()
+        self.assertTrue(home_page.is_shopping_cart_empty())
+
     def test_sign_in_existing_user_from_home_page(self):
         user_information = PersonalInformation(email="johndoe@mailinator.com", first_name="John", last_name="Doe",
                                                password="12345")
@@ -30,6 +37,34 @@ class FunctionalTests(BaseTest):
         authentication = Authentication(self.browser)
         authentication.sign_in(user=user_information)
         account = MyAccount(self.browser)
+        name_surname = user_information.first_name + ' ' + user_information.last_name
+        self.assertTrue(account.is_user_logged(name_surname))
+
+    def test_sign_in_existing_user_wrong_password_from_home_page(self):
+        user_information = PersonalInformation(email="johndoe@mailinator.com", first_name="John", last_name="Doe",
+                                               password="12346")
+        self.browser.get('http://automationpractice.com/index.php')
+        self.assertIn('My Store', self.browser.title)
+        home_page = HomePage(self.browser)
+        home_page.sign_in()
+        authentication = Authentication(self.browser)
+        authentication.sign_in(user=user_information)
+        account = MyAccount(self.browser)
+        name_surname = user_information.first_name + ' ' + user_information.last_name
+        self.assertFalse(account.is_user_logged(name_surname))
+
+    def test_sign_in_wrong_user_from_home_page(self):
+        user_information = PersonalInformation(email="john@mailinator.com", first_name="John", last_name="Doe",
+                                               password="12345")
+        self.browser.get('http://automationpractice.com/index.php')
+        self.assertIn('My Store', self.browser.title)
+        home_page = HomePage(self.browser)
+        home_page.sign_in()
+        authentication = Authentication(self.browser)
+        authentication.sign_in(user=user_information)
+        account = MyAccount(self.browser)
+        name_surname = user_information.first_name + ' ' + user_information.last_name
+        self.assertFalse(account.is_user_logged(name_surname))
 
     def test_search_not_existing_product(self):
         product = "not existing product"
