@@ -2,4 +2,7 @@
 prova.py
 geckodriver.log
 base/*/
-tests/*/
+common/*/
+configuration/*/
+pages/*/
+tests_generic/*/

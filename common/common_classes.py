@@ -24,3 +24,16 @@ class PersonalInformation:
         return '(Email=%s\nTitle=%s\nFirst Name=%s\nLast Name=%s\nPassword=%s\n)' % \
                (self.email, self.title, self.first_name, self.last_name, self.password)
 
+
+class Product:
+    def __init__(self, name, sku, size, color, availability=None, unit_price=None, discount=None):
+        self.name = name
+        self.sku = sku
+        self.size = size
+        self.color = color
+        if availability is not None:
+            self.availability = availability
+        if unit_price is not None:
+            self.unit_price = unit_price
+        if discount is not None:
+            self.discount = discount

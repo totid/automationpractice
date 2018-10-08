@@ -19,6 +19,5 @@ class BaseTest(unittest.TestCase):
         self.browser.delete_all_cookies()
 
     def tearDown(self):
-        #self.browser.quit()
-        return
+        self.browser.quit()
 
