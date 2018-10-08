@@ -43,3 +43,13 @@ Create a symlink
 sudo ln -s /usr/local/share/geckodriver /usr/local/bin/geckodriver
 ```
 #### How to run the tests:
+Single test cases are implemented into the following file
+```
+/automationpractice/tests_generic/FunctionalTest.py
+```
+and could be run independently.
+
+A whole test suite is also defined in the root of the project and it includes the execution of the single test cases in a single run.
+```
+python /automationpractice/main.py
+```
