@@ -6,3 +6,4 @@ common/*/
 configuration/*/
 pages/*/
 tests_generic/*/*
+report/*

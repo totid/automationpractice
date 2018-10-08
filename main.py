@@ -1,4 +1,5 @@
 import unittest
+import HtmlTestRunner
 from tests_generic.FunctionalTests import FunctionalTests
 
 
@@ -19,5 +20,6 @@ def suite():
 
 
 if __name__ == '__main__':
-    runner = unittest.TextTestRunner(verbosity=2)
+    runner = HtmlTestRunner.HTMLTestRunner(verbosity=2, output='')
+    #runner = unittest.TextTestRunner(verbosity=2)
     runner.run(suite())

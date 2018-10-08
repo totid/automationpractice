@@ -53,3 +53,8 @@ A whole test suite is also defined in the root of the project and it includes th
 ```
 python /automationpractice/main.py
 ```
+#### Reports:
+Reports can be found in the following directory
+```
+/automationpractice/reports/
+```
