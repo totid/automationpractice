@@ -60,7 +60,10 @@ Single test cases are implemented into the following file
 ```
 /automationpractice/tests_generic/FunctionalTest.py
 ```
-and could be run independently.
+and could be run independently like this
+```
+/automationpractice/$ python -m unittest -v tests_generic.FunctionalTests.FunctionalTests.test_open_page
+```
 
 A whole test suite is also defined in the root of the project and it includes the execution of the single test cases in a single run.
 ```
