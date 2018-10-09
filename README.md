@@ -14,6 +14,10 @@ Used Page Object Pattern implementation.
 * PyCharm: 2018.2.4 (Community Edition)
 
 
+### Clone or download project
+__https://github.com/totid/automationpractice.git__
+
+
 ### Prerequisites (python packages):
 ```
 $ pip install -r /automationpractice/requirements.txt
