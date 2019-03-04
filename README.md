@@ -55,7 +55,7 @@ $ sudo ln -s /usr/local/share/geckodriver /usr/local/bin/geckodriver
 ```
 
 #### Browser configuration:
-The supported browser with which the tests will be performed con be configured in the following file using the constants CHROME or FIREFOX
+The supported browser with which the tests will be performed can be configured in the following file using the constants CHROME or FIREFOX
 ```
 /automationpractice/configuration/brower_configuration.py
 ```
